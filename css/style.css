@@ -1,0 +1,92 @@
+/* RESET SIMPLE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIABLES (très utile pour Astro + design system) */
+:root {
+  --color-text: #111;
+  --color-background: #fff;
+  --color-accent: #4f46e5;
+
+  --font-base: system-ui, sans-serif;
+}
+
+/* BASE */
+body {
+  font-family: var(--font-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.6;
+}
+
+/* HEADER */
+.site-header {
+  padding: 1.5rem 2rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* HERO */
+.hero {
+  padding: 4rem 2rem;
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* PROJETS */
+.projects {
+  padding: 4rem 2rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  padding: 2rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+}
+
+/* FOOTER */
+.site-footer {
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+}
