@@ -1,4 +1,4 @@
-# Portfolio UX/UI – Prénom Nom
+# Portfolio UX/UI – EN CONSTRUCTION
 
 Portfolio personnel présentant mes projets en UX/UI design.
 
@@ -29,5 +29,6 @@ portfolio/
 └── README.md
 
 ## 👤 Auteur
-Prénom Nom  
+Camille Douangpaseut 
 Étudiante en UX/UI Design
+
