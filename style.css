@@ -1,3 +1,11 @@
+:root {
+  --navbar-height: 72px;
+  --section-margin: 32px;
+  --hero-space-top: 32px;    /* espace entre navbar et contenu hero */
+  --hero-space-bottom: 32px; /* espace entre bas hero et section suivante */
+  --header-hero-gap: 64px;
+}
+
 /* RESET */
 * {
   margin: 0;
@@ -17,46 +25,45 @@ body {
   line-height: 1.6;
 }
 
+/* HEADER = NAV + HERO */
 .header {
-  min-height: 100vh;
-  position: relative;
+  padding-top: calc(var(--navbar-height) + var(--header-hero-gap));
+  box-sizing: border-box;
 }
 
 
 /* CONTAINER */
 .container {
-  max-width: 1240px; /* aligné avec navbar */
+  max-width: var(--section-max-width);
   margin: 0 auto;
-  padding: 0 20px;   
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 
 /* ========== NAVBAR ========== */
 .navbar {
   position: fixed;
-  top: 24px;
+  top: var(--section-margin);
   left: 50%;
-  transform: translateX(-50%); /* centre la navbar horizontalement */
-  z-index: 1000;
+  transform: translateX(-50%);
   width: 100%;
+  z-index: 1000;
   display: flex;
   justify-content: center;
-  padding: 0; /* supprimer padding global */
 }
 
 .nav-content {
+  max-width: 1240px;
+  width: 100%;
+  padding: 16px 40px;
+  border-radius: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1240px; /* même largeur que les sections */
-  width: 100%; /* s’adapte à l’écran */
-  padding: 16px 40px;
-  border-radius: 24px;
-  background: #f8f8f8;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.10);
 }
-
 
 .logo {
   font-size: 1.4rem;
@@ -78,7 +85,7 @@ body {
 
 .cta-contact {
   background: #161616;
-  color: #f8f8f8; !important; /* texte visible */
+  color: #f8f8f8 !important; /* texte visible */
   padding: 10px 20px;
   border-radius: 999px;
   text-decoration: none;
@@ -93,11 +100,12 @@ body {
 
 /* ========== SECTIONS BLOCS ========== */
 .section {
-  background: #f8f8f8;;
+  background: #fff;
   border-radius: 16px;
-  margin: 32px auto;
-  padding: 48px 0 84px 0; /* réduit le padding haut/bas */
-  max-width: 1240px;
+  max-width: 1240px;           /* même largeur que navbar et hero */
+  margin: 32px auto;            /* centrer horizontalement et marge verticale */
+  padding: 48px 40px 84px 40px;/* padding interne */
+  box-sizing: border-box;
 }
 
 .section h2 {
@@ -109,19 +117,28 @@ body {
 
 /* ========== HERO ========== */
 .hero {
-  min-height: calc(100vh - 80px); /* navbar incluse */
+  margin: 0 auto; /* pas de margin-top */
+  padding: var(--hero-space-top) 40px var(--hero-space-bottom) 40px;
+  background: #fff;
+  border-radius: 16px;
+  max-width: 1240px;             /* largeur identique à navbar */
   display: flex;
-  align-items: flex-end; /* texte en bas */
-  justify-content: flex-end; /* texte à droite */
-  padding: 0 400px 40px 0; /* espacement bas et droite */
+  align-items: flex-end;
+  justify-content: flex-end;
+  min-height: calc(100vh - var(--navbar-height) - 3 * var(--section-margin)); 
+  box-sizing: border-box;
 }
 
-.hero h1 {
+.hero-text {
+  margin-bottom: var(--section-margin); /* espace entre texte et bord bas du hero */
+}
+
+.hero-text h1 {
   font-size: 3rem;
   margin-bottom: 16px;
 }
 
-.hero p {
+.hero-text p {
   font-size: 1rem;
   max-width: 400px;
 }
@@ -283,6 +300,7 @@ body {
 .footer-top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 40px;
 }
 
