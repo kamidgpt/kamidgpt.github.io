@@ -7,6 +7,28 @@
   --content-width: min(92vw, 1320px);
 }
 
+h1 {
+  font-size: clamp(2.441rem, 4vw, 3.052rem) !important;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(1.953rem, 3vw, 2.441rem) !important;
+  line-height: 1.15;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.25rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
 /* RESET */
 * {
   margin: 0;
@@ -98,7 +120,6 @@ body {
   align-items: center;
 }
 
-
 /* ========== SECTIONS BLOCS ========== */
 .section {
   background: #fff;
@@ -114,7 +135,6 @@ body {
   font-size: 2.6rem;
   margin-bottom: 64px;
 }
-
 
 /* ========== HERO ========== */
 .hero {
@@ -143,7 +163,6 @@ body {
   font-size: 1rem;
   max-width: 400px;
 }
-
 
 /* ========== CE QUE JE FAIS ========== */
 .cards-grid {
@@ -357,7 +376,6 @@ body {
   object-fit: cover;
 }
 
-
 /* ========== FOOTER ========== */
 .footer {
   background: #161616;
@@ -394,7 +412,6 @@ body {
   color: #161616;
 }
 
-
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
 
@@ -420,8 +437,6 @@ body {
   .section {
     padding-bottom: 40px;
   }
-
-
 
   .hero {
     padding: 40px 16px 0 16px;
@@ -513,14 +528,32 @@ body {
 }
 
 
-
 /* ===========================
-   CASE STUDY FINAL
+   CASE STUDY
 =========================== */
+
+.case-hero {
+  position: relative;
+  padding: 220px 0 160px;
+  background-image: url("assets/seoulmate/hero-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 .case-hero-box {
   text-align: center;
   padding: 120px 0;
+}
+
+.case-hero-box h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.case-hero-box h2 {
+  font-size: 1.2rem;
 }
 
 .case-tags {
@@ -536,6 +569,7 @@ body {
   border-radius: 999px;
   padding: 6px 14px;
   font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .case-buttons a {
@@ -565,9 +599,8 @@ body {
 }
 
 /* SECTIONS */
-
 .case-section {
-  padding: 120px 0;
+  padding: 120px 0 0 0;
   background: transparent;
 }
 
@@ -576,10 +609,7 @@ body {
   margin: 0 auto;
 }
 
-
-
 /* VISUELS CENTRÉS AVEC ENCADRÉ */
-
 .case-visual {
   max-width: 1200px;
   margin: 100px auto;
@@ -596,8 +626,33 @@ body {
   border-radius: 18px;
 }
 
-/* BENTO */
 
+/* CAROUSEL */
+.carousel-section {
+  overflow: hidden;
+  width: 100%;
+  padding: 80px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 40px;
+  animation: scroll 20s linear infinite;
+}
+
+.carousel-track img {
+  width: 500px;
+  border-radius: 24px;
+  flex-shrink: 0;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* BENTO */
 .bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -605,7 +660,6 @@ body {
 }
 
 /* TEXT */
-
 .case-list {
   margin: 24px 0;
   padding-left: 20px;
@@ -631,8 +685,31 @@ body {
   gap: 40px;
 }
 
-/* RESPONSIVE */
+/* NAVIGATION ENTRE PROJETS */
+.project-navigation {
+  padding: 120px 0 0 0;
+  border-top: 1px solid #eee;
+}
 
+.project-nav-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-navigation a {
+  text-decoration: none;
+  color: black;
+  font-size: 0.9rem;
+}
+
+.project-navigation span {
+  display: block;
+  font-size: 1.3rem;
+  margin-top: 8px;
+}
+
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
 
   .case-section {
