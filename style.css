@@ -126,13 +126,12 @@ body {
   border-radius: 16px;
   max-width: var(--content-width);
   margin: 32px auto;            /* centrer horizontalement et marge verticale */
-  padding: 48px 40px 84px 40px;/* padding interne */
+  padding: 48px 40px 48px 40px;/* padding interne */
   box-sizing: border-box;
 }
 
 .section h2 {
   text-align: center;
-  font-size: 2.6rem;
   margin-bottom: 64px;
 }
 
@@ -144,7 +143,7 @@ body {
   border-radius: 16px;
   max-width: var(--content-width);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
   min-height: calc(100vh - var(--navbar-height) - 3 * var(--section-margin)); 
   box-sizing: border-box;
@@ -157,11 +156,14 @@ body {
 .hero-text h1 {
   font-size: 3rem;
   margin-bottom: 16px;
+
 }
 
 .hero-text p {
   font-size: 1rem;
-  max-width: 400px;
+  max-width: 500px;
+  text-align: center;
+  padding: 24px 0;
 }
 
 /* ========== CE QUE JE FAIS ========== */
@@ -185,9 +187,8 @@ body {
 }
 
 .info-card img {
-  width: 80px;
   height: 80px;
-  object-fit: cover;
+  max-width: 100px;
   margin-bottom: 16px;
 }
 
@@ -264,10 +265,7 @@ body {
   border-radius: 12px;
 }
 
-.project-card:hover .tags {
-  opacity: 1;
-  transform: translateY(0);
-}
+
 
 /* ========== EXPLORATIONS HOME ========== */
 .explorations-grid {
@@ -531,11 +529,32 @@ body {
 /* ===========================
    CASE STUDY
 =========================== */
+.case-hero--accueil {
+  background-image: url("assets/accueil2.jpg");
+  background-size: cover;
+}
+
+.case-hero--seoulmate {
+  background-image: url("assets/seoulmate/hero-background.jpg");
+}
+
+.case-hero--neeft {
+  background-image: url("assets/neeft/hero-background.jpg");
+}
+
+.case-hero--nagigiri {
+  background-image: url("assets/nagigiri/hero-background.jpg");
+}
+
+.case-hero--euno {
+  background-image: url("assets/euno/hero-background.jpg");
+}
+
 
 .case-hero {
   position: relative;
   padding: 220px 0 160px;
-  background-image: url("assets/seoulmate/hero-background.jpg");
+  align-items: center;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -550,10 +569,6 @@ body {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 16px;
-}
-
-.case-hero-box h2 {
-  font-size: 1.2rem;
 }
 
 .case-tags {
@@ -587,17 +602,6 @@ body {
   gap: 24px;
 }
 
-.case-box {
-  border-radius: 20px;
-  max-width: var(--content-width);
-  margin: 60px auto;
-  padding: 100px 60px;
-}
-
-.case-narrow {
-  max-width: 820px;
-}
-
 /* SECTIONS */
 .case-section {
   padding: 120px 0 0 0;
@@ -609,14 +613,29 @@ body {
   margin: 0 auto;
 }
 
+.case-subtitle-ps {
+  text-align: center;
+  margin-top: 40px;
+}
+
 /* VISUELS CENTRÉS AVEC ENCADRÉ */
 .case-visual {
   max-width: 1200px;
-  margin: 100px auto;
+  margin: 54px auto;
+}
+
+.case-visual.benchmark .visual-container {
+  max-width: 600px; 
+  margin: 0 auto;
+}
+
+.case-visual.bento {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
 
 .visual-container {
-  background: #f6f6f6;
   border-radius: 28px;
 }
 
@@ -626,30 +645,91 @@ body {
   border-radius: 18px;
 }
 
+/* ===========================
+   WIREFRAMES 3 COLONNES
+=========================== */
+
+.case-wireframes {
+  max-width: 1200px;
+  margin: 32px auto;
+  padding: 0 64px;
+  justify-content: center; /* centre horizontalement */
+}
+
+.case-wireframes-row {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 24px;
+  justify-content: center; /* centre les 3 blocs */
+}
+
+.visual-item img,
+.visual-video video {
+  max-height: 500px;
+  border-radius: 24px;
+  display: block;
+}
+
+.visual-item img {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.visual-item img:hover {
+  transform: scale(1.04);
+}
+
+
+/* Overlay général invisible par défaut */
+.visual-hover-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.visual-hover-overlay img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 24px;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+/* zoom léger quand visible */
+.visual-hover-overlay[style*="opacity: 1"] img {
+  transform: scale(1);
+}
+
 
 /* CAROUSEL */
 .carousel-section {
   overflow: hidden;
   width: 100%;
-  padding: 80px 0;
+  position: relative;
 }
 
 .carousel-track {
   display: flex;
   gap: 40px;
-  animation: scroll 20s linear infinite;
+  flex-wrap: nowrap;
+  user-select: none;
+  will-change: transform;
 }
 
 .carousel-track img {
-  width: 500px;
+  flex: 0 0 auto;
+  width: 500px; /* même taille que la page d’accueil */
   border-radius: 24px;
-  flex-shrink: 0;
+  pointer-events: none; /* évite les conflits drag */
 }
 
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
 
 
 /* BENTO */
@@ -661,8 +741,14 @@ body {
 
 /* TEXT */
 .case-list {
+  list-style: none;
+  padding: 0;
   margin: 24px 0;
-  padding-left: 20px;
+}
+
+.case-list li::before {
+  content: "●";
+  margin-right: 8px;
 }
 
 .case-info {
@@ -728,4 +814,158 @@ body {
     padding: 20px;
   }
 
+}
+
+/* ===== Décisions clés ===== */
+.decisions-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.decisions-wrapper {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;  /* aligner en haut */
+  justify-content: space-between; /* répartir les 2 colonnes */
+  width: 100%;
+  max-width: 100%;    /* éviter que le flex dépasse le container */
+}
+
+#decisions-list { /* Colonne gauche (liste) */
+  position: relative; /* pour que les contenus absolus soient contenus */
+  min-height: 500px;
+  width: 600px;
+}
+
+.decision-image { /* Colonne droite (image) */
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  justify-content: center; /* centre l'image dans la colonne */
+  align-items: flex-start;
+}
+
+/* Liste compacte */
+.decision-item {
+  margin-bottom: 0.6rem;      /* espace entre titres non-actifs */
+  font-size: 1.1rem;          /* taille des titres non-actifs */
+  opacity: 0.4;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+/* Item actif */
+.decision-item.active {
+  opacity: 1;
+}
+
+.decision-item .decision-title {
+  display: block;
+}
+
+.decision-item.active .decision-title {
+  font-size: clamp(1.563rem, 2.5vw, 1.563rem) !important; /* titre plus gros quand actif */
+  font-weight: 700 !important;
+  line-height: 1.2;     
+  margin-top: 2rem;     
+  margin-bottom: 1rem;     /* espace entre titre actif et contenu */
+}
+
+/* Contenu qui s’ouvre */
+.decision-content {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  position: absolute; /* empile tous les contenus */
+  left: 0;
+  right: 0;
+  margin-bottom: 2rem;         
+}
+
+.decision-content p {
+  margin-bottom: 1rem;
+}
+
+/* Contenu visible */
+.decision-item.active .decision-content {
+  opacity: 1;
+  position: relative; /* rend le contenu actif normal pour prendre sa place */
+}
+
+.decision-item:hover {
+  opacity: 1;
+}
+
+.decision-image img {
+  width: 100%;
+  aspect-ratio: 6 / 5;          /* ratio largeur / hauteur */
+  border-radius: 24px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  max-width: 1800px;
+  height: auto;                  /* permet de respecter aspect-ratio */
+}
+
+.decision-note {
+  margin-top: 3rem;
+  max-width: 600px;
+}
+
+#decisions-list li::before {
+  content: none;
+}
+
+/* ===== SCOPE DU PROJET ===== */
+.project-scope {
+  padding: 60px 0 0 0;
+}
+
+.scope-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.scope-wrapper span {
+  position: relative;
+  padding-right: 20px;
+}
+
+.scope-wrapper span:not(:last-child)::after {
+  content: "•";
+  position: absolute;
+  right: 6px;
+}
+
+
+.case-orderedlist {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 40px 0;
+}
+
+.case-orderedlist li {
+  counter-increment: step;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.case-orderedlist li::before {
+  content: counter(step);
+  min-width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
